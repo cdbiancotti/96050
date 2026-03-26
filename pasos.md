@@ -1,3 +1,5 @@
+# Guia para un proyecto django
+
 1. creamos una carpeta donde vamos a meter el proyecto
 2. entramos en la carpeta y la abrimos con vscode
 3. creamos el archivo .gitignore le guardamos lo generado por la pagina [gitignore.io](https://gitignore.io) seleccionando lo que van a utilizar (en nuestro caso `visualstudiocode`, `python` y `django`)
@@ -8,6 +10,17 @@
 8. conectamos nuestro repositorio con el repositorio en la nube (github u otro)
 9. hacemos el primer push
 10. activamos el entorno virtual (`*`)
+
+    ```shell
+    # Windows
+    source .venv/Scripts/activate
+    . .venv/Scripts/activate
+
+    # Linux/Mac
+    source .venv/bin/activate
+    . .venv/bin/activate
+    ```
+
 11. instalar django con el manejador de paquetes de python `pip` con el comando `pip install Django`
 12. crear el requirements.txt con los datos de las dependencias usando el comando `pip freeze > requirements.txt` (`**`)
 13. crear el proyecto django donde estamos trabajando con el comando `django-admin startproject <nombre_del_proyecto> .` (`***`)

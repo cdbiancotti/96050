@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear producto</title>
-</head>
-<body>
-    <form action="/crear_producto/" method="post">
+{% extends "base.html" %}
+
+{% block texto_pestania %}Crear producto{% endblock texto_pestania %}
+
+{% block contenido %}
+<form action="{% url 'producto:crear_producto' %}" method="post">
         {% csrf_token %}
 
         {% comment %} <label for="nombre">Nombre: </label>
@@ -19,5 +16,4 @@
         <input type="submit" value="Crear">
         {% comment %} <button>Crear</button> {% endcomment %}
     </form>
-</body>
-</html>
+{% endblock contenido %}

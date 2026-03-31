@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.template import Template, Context, loader
 
 from producto.models import Producto
-from producto.forms import FormularioProducto
+from producto.forms import FormularioProducto, FormularioBusqueda
 
 # def inicio(request):
 #     return HttpResponse('<h1>HOLA BIENVENIDO A MI PAGINA!!</h1>')
@@ -75,4 +75,20 @@ def crear_producto(request):
     formulario = FormularioProducto()
 
     return render(request, 'producto/crear_producto.html', {'formulario': formulario})
+
+
+def listar_productos(request):
     
+    
+    formulario = FormularioBusqueda(request.GET)
+    if formulario.is_valid():
+        filtro_nombre = formulario.cleaned_data['nombre']
+        productos = Producto.objects.filter(nombre__icontains=filtro_nombre)
+    else:
+        productos = Producto.objects.all()
+    
+    return render(request, 'producto/listar_productos.html', {'productos': productos, 'formulario': formulario})
+
+def detalle_producto(request, id_producto):
+    producto = Producto.objects.get(id=id_producto)
+    return render(request, 'producto/detalle_productos.html', {'producto': producto})

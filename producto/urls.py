@@ -1,11 +1,14 @@
 
 from django.urls import path
-from producto.views import inicio, datos, productos, crear_producto
+from producto.views import inicio, datos, productos, crear_producto, listar_productos, detalle_producto
 
+app_name = 'producto'
 
 urlpatterns = [
-    path('', inicio),
+    path('', inicio, name='inicio'),
     path('datos/', datos),
-    path('productos/', productos),
-    path('crear_producto/', crear_producto),
+    # path('productos/', productos),
+    path('crear_producto/', crear_producto, name='crear_producto'),
+    path('productos/', listar_productos, name='listar_productos'),
+    path('productos/<int:id_producto>/', detalle_producto, name='detalle'),
 ]

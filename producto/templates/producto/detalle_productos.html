@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Detalle producto{% endblock texto_pestania %}
+
+{% block contenido %}
+<ul>
+    <p>Nombre: {{ producto.nombre }}</p>
+    <p>Descripción: {{ producto.descripcion }}</p>
+</ul>
+{% endblock contenido %}

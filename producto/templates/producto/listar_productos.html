@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% block texto_pestania %}Listar productos{% endblock texto_pestania %}
+
+{% block contenido %}
+
+<form action={% url "producto:listar_productos" %} method="get">
+    {{formulario}}
+    <input type="submit" value="Filtrar">
+</form>
+
+{% if productos %}
+    <ul>
+        {% for producto in productos %}
+        <li>
+                <a href={% url "producto:detalle" producto.id %}>
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.descripcion }}</p>
+                </a>
+                </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No hay productos para mostrar.</p>
+    {% endif %}
+{% endblock contenido %}

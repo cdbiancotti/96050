@@ -3,6 +3,8 @@
 
 {% block texto_pestania %}Listar productos{% endblock texto_pestania %}
 
+{% block header_h1 %}Listado de Productos{% endblock header_h1 %}
+
 {% block contenido %}
 
 <form action={% url "producto:listar_productos" %} method="get">
@@ -14,10 +16,10 @@
     <ul>
         {% for producto in productos %}
         <li>
-                <a href={% url "producto:detalle" producto.id %}>
-                    <h3>{{ producto.nombre }}</h3>
-                    <p>{{ producto.descripcion }}</p>
-                </a>
+                <a href={% url "producto:detalle" producto.id %}> {{ producto.nombre }} </a> |
+                <a href={% url "producto:actualizar" producto.id %}>Actualizar</a> |
+                <a href={% url "producto:eliminar" producto.id %}>Eliminar</a>
+
                 </li>
         {% endfor %}
     </ul>

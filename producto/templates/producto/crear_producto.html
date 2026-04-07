@@ -2,6 +2,8 @@
 
 {% block texto_pestania %}Crear producto{% endblock texto_pestania %}
 
+{% block header_h1 %}Crear Producto{% endblock header_h1 %}
+
 {% block contenido %}
 <form action="{% url 'producto:crear_producto' %}" method="post">
         {% csrf_token %}

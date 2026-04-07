@@ -8,7 +8,7 @@ La pre-entrega debera constar de:
 - [X] un formulario para la creacion del modelo
 - [X] una vista de creacion de datos para ese modelo que implemente el formulario anterior
 - [X] una vista que liste todos los datos creado de ese modelo
-- [ ] una buscador en la vista de listado
+- [X] una buscador en la vista de listado
 - [X] herencia de template
 - [X] debera entregarse un link al repositorio de github donde se encuentre alojado el proyecto
 

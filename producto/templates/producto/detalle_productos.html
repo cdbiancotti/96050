@@ -2,9 +2,11 @@
 
 {% block texto_pestania %}Detalle producto{% endblock texto_pestania %}
 
+{% block header_h1 %}Producto: {{ producto.pk }}{% endblock header_h1 %}
+
 {% block contenido %}
 <ul>
-    <p>Nombre: {{ producto.nombre }}</p>
-    <p>Descripción: {{ producto.descripcion }}</p>
+    <li>Nombre: {{ producto.nombre }}</li>
+    <li>Descripción: {{ producto.descripcion }}</li>
 </ul>
 {% endblock contenido %}

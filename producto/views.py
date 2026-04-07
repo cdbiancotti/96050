@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import Template, Context, loader
 
@@ -92,3 +92,27 @@ def listar_productos(request):
 def detalle_producto(request, id_producto):
     producto = Producto.objects.get(id=id_producto)
     return render(request, 'producto/detalle_productos.html', {'producto': producto})
+
+def eliminar_producto(request, id_producto):
+    producto = Producto.objects.get(id=id_producto)
+    producto.delete()
+    return redirect('producto:listar_productos')
+
+def actualizar_producto(request, id_producto):
+    producto = Producto.objects.get(id=id_producto)
+    
+    if request.method == "POST":
+        formulario = FormularioProducto(request.POST)
+        if formulario.is_valid():
+            info_nueva = formulario.cleaned_data
+            producto.nombre = info_nueva['nombre']
+            producto.descripcion = info_nueva['descripcion']
+            
+            producto.save()
+            return redirect('producto:listar_productos')
+    else:
+        formulario = FormularioProducto(initial={'nombre': producto.nombre, 'descripcion': producto.descripcion})
+    
+    return render(request, 'producto/actualizar_producto.html', {'formulario': formulario, 'producto': producto})
+    
+    

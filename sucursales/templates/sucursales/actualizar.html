@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Actualizar sucursal{% endblock texto_pestania %}
+
+{% block header_h1 %}Actualizar Sucursal{% endblock header_h1 %}
+
+{% block contenido %}
+<form action="{% url 'sucursales:actualizar' sucursal.pk %}" method="post">
+        {% csrf_token %}
+
+        {{form}}
+
+        <input type="submit" value="Actualizar">
+    </form>
+{% endblock contenido %}

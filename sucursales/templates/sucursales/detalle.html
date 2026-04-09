@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Detalle sucursal{% endblock texto_pestania %}
+
+{% block header_h1 %}Sucursal: {{ sucursal.pk }}{% endblock header_h1 %}
+
+{% block contenido %}
+<ul>
+    <li>Nombre: {{ sucursal.nombre }}</li>
+    <li>Dirección: {{ sucursal.direccion }}</li>
+    <li>Fecha apertura: {{ sucursal.fecha_apertura }}</li>
+</ul>
+{% endblock contenido %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Eliminar sucursal{% endblock texto_pestania %}
+
+{% block header_h1 %}Eliminar Sucursal{% endblock header_h1 %}
+
+{% block contenido %}
+<form action="{% url 'sucursales:eliminar' sucursal.pk %}" method="post">
+        {% csrf_token %}
+
+        <p>¿Estás seguro de que quieres eliminar esta sucursal: {{ sucursal.nombre }}?</p>
+
+        <input type="submit" value="Eliminar">
+    </form>
+{% endblock contenido %}

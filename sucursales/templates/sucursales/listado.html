@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% block texto_pestania %}Listar sucursales{% endblock texto_pestania %}
+
+{% block header_h1 %}Listado de Sucursales{% endblock header_h1 %}
+
+{% block contenido %}
+
+<p><a href="{% url "sucursales:crear" %}">Crear Sucursal</a></p>
+
+<p>
+    <form action={% url "sucursales:listado" %} method="get">
+        {{formulario}}
+        <input type="submit" value="Filtrar">
+    </form> 
+</p>
+
+
+{% if sucursales %}
+    <ul>
+        {% for sucursal in sucursales %}
+        <li>
+            <a href={% url "sucursales:detalle" sucursal.pk %}> {{ sucursal }} </a> |
+            <a href={% url "sucursales:actualizar" sucursal.pk %}>Actualizar</a> |
+            <a href={% url "sucursales:eliminar" sucursal.pk %}>Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No hay sucursales para mostrar.</p>
+    {% endif %}
+{% endblock contenido %}

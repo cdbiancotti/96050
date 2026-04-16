@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Perfil{% endblock texto_pestania %}
+
+{% block header_h1 %}Perfil de {{request.user.username}}{% endblock header_h1 %}
+
+{% block contenido %}
+<p>Nombre: {{request.user.first_name}}</p>
+<p>Apellido: {{request.user.last_name}}</p>
+<p>Correo: {{request.user.email}}</p>
+{% endblock contenido %}

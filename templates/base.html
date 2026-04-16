@@ -35,6 +35,18 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'producto:crear_producto' %}">Crear Producto</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'producto:listar_productos' %}">Productos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'sucursales:listado' %}">Sucursales</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url "usuarios:perfil" %}">{{request.user.username}}</a></li>
+                            <li class="nav-item">
+                                <form action="{% url 'usuarios:cerrar_sesion' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Cerrar sesion" class="btn btn-danger">
+                                </form>
+                            </li>
+                            {% else %}
+                            <li class="nav-item"><a class="btn btn-primary" href="{% url 'usuarios:iniciar_sesion' %}">Iniciar sesion</a></li>
+                            <li class="nav-item"><a class="btn btn-info" style="color: white;" href="{% url 'usuarios:registro' %}">Registrarse</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Iniciar sesion{% endblock texto_pestania %}
+
+{% block header_h1 %}Iniciar Sesion{% endblock header_h1 %}
+
+{% block contenido %}
+<form action="{% url 'usuarios:iniciar_sesion' %}" method="post">
+        {% csrf_token %}
+
+        {{formulario_iniciar_sesion}}
+
+        <input type="submit" value="Iniciar sesion">
+    </form>
+{% endblock contenido %}

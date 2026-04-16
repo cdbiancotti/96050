@@ -3,6 +3,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import Template, Context, loader
+from django.contrib.auth.decorators import login_required
 
 from producto.models import Producto
 from producto.forms import FormularioProducto, FormularioBusqueda
@@ -54,7 +55,8 @@ def productos(request):
     producto = Producto(nombre='jabon liquido', descripcion='uso para lavado de manos.')
     producto.save()
     return render(request, 'producto/productos.html', {'producto': producto})
-    
+
+@login_required
 def crear_producto(request):
     
     # print('GET: ', request.GET)
@@ -93,11 +95,13 @@ def detalle_producto(request, id_producto):
     producto = Producto.objects.get(id=id_producto)
     return render(request, 'producto/detalle_productos.html', {'producto': producto})
 
+@login_required
 def eliminar_producto(request, id_producto):
     producto = Producto.objects.get(id=id_producto)
     producto.delete()
     return redirect('producto:listar_productos')
 
+@login_required
 def actualizar_producto(request, id_producto):
     producto = Producto.objects.get(id=id_producto)
     

@@ -1,11 +1,25 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block texto_pestania %}Perfil{% endblock texto_pestania %}
 
 {% block header_h1 %}Perfil de {{request.user.username}}{% endblock header_h1 %}
 
 {% block contenido %}
-<p>Nombre: {{request.user.first_name}}</p>
-<p>Apellido: {{request.user.last_name}}</p>
-<p>Correo: {{request.user.email}}</p>
+<ul>
+    <li>Nombre: {{request.user.first_name}}</li>
+    <li>Apellido: {{request.user.last_name}}</li>
+    <li>Correo: {{request.user.email}}</li>
+    <li>Fecha Nacimiento: {{request.user.infoextra.fecha_nacimiento}}</li>
+    <li>Avatar: 
+        {% if request.user.infoextra.avatar %}
+            <img src="{{request.user.infoextra.avatar.url}}" alt="{{request.user.username}}"  height="40">
+        {% else %}
+            {% comment %} <img src="{% static "assets/profile.png" %}" alt="{{request.user.username}}"  height="40"> {% endcomment %}
+        {{request.user.username}}
+            {% endif %}
+    </li>
+</ul>
+
+<p><a href="{% url "usuarios:actualizar_perfil" %}">Actualizar Perfil</a></p>
+<p><a href="{% url "usuarios:actualizar_pass" %}">Cambiar Pass</a></p>
 {% endblock contenido %}

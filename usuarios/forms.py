@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
 
@@ -19,3 +19,35 @@ class CreacionUsuario(UserCreationForm):
 
     #     self.fields['password1'].help_text = ""
     #     self.fields['password2'].help_text = ""
+    
+class ActualizarPerfil(UserChangeForm):
+    password = None
+    fecha_nacimiento = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), required=False)
+    avatar = forms.ImageField(required=False)
+    
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'fecha_nacimiento', 'avatar']
+        labels = {
+            "first_name": "Nombre",
+            "last_name": "Apellido",
+            "email": "Email",
+            # "fecha_naciemiento": "Fecha Nacimiento",
+            }
+        # widgets = {
+        #     "fecha_nacimiento": forms.DateInput(attrs={'type': 'date'}),
+        #     }
+        
+class CambiarPass(PasswordChangeForm):
+    ...
+    
+    # class Meta:
+    #     model = User
+    #     # label = {
+            
+    #     # }
+    #     help_texts = {
+    #         "old_password": '',
+    #         "new_password1": '',
+    #         "new_password2": '',
+    #     }

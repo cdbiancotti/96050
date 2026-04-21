@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block texto_pestania %}Actualizar Pass{% endblock texto_pestania %}
+
+{% block header_h1 %}Actualizar Pass{% endblock header_h1 %}
+
+{% block contenido %}
+<form action="{% url 'usuarios:actualizar_pass' %}" method="post">
+        {% csrf_token %}
+
+        {{form}}
+
+        <input type="submit" value="Actualizar Pass">
+    </form>
+{% endblock contenido %}

@@ -39,15 +39,6 @@ class ActualizarPerfil(UserChangeForm):
         #     }
         
 class CambiarPass(PasswordChangeForm):
-    ...
-    
-    # class Meta:
-    #     model = User
-    #     # label = {
-            
-    #     # }
-    #     help_texts = {
-    #         "old_password": '',
-    #         "new_password1": '',
-    #         "new_password2": '',
-    #     }
+    old_password = forms.CharField(label='Contrasenia Vieja', help_text="", widget=forms.PasswordInput)
+    new_password1 = forms.CharField(label='Contrasenia Nueva', help_text="", widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label='Repetir Contrasenia Nueva', help_text="", widget=forms.PasswordInput)
